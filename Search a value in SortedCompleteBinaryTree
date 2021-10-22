@@ -1,0 +1,40 @@
+import java.util.Scanner;
+class test{
+	
+	public static void main(String []args){
+		Tree SortedCompleteBinaryTree=new Tree();
+		SortedCompleteBinaryTree.root=new Node(7);
+		SortedCompleteBinaryTree.root.leftChild=new Node(4);System.out.println(SortedCompleteBinaryTree.root.leftChild.value);
+		SortedCompleteBinaryTree.root.rightChild=new Node(9);
+		SortedCompleteBinaryTree.root.leftChild.leftChild=new Node(2);
+		SortedCompleteBinaryTree.root.leftChild.rightChild=new Node(6);
+		SortedCompleteBinaryTree.root.leftChild.leftChild.leftChild=new Node(1);
+		SortedCompleteBinaryTree.root.leftChild.leftChild.rightChild=new Node(3);
+		SortedCompleteBinaryTree.root.leftChild.rightChild.leftChild=new Node(5);
+		SortedCompleteBinaryTree.root.rightChild.leftChild=new Node(8);
+		SortedCompleteBinaryTree.root.rightChild.rightChild=new Node(10);
+		Scanner s=new Scanner(System.in);
+		Node x[]={null,null,null,null};
+		for(int i=0;i<x.length;i++){
+			int gemp=s.nextInt();
+			Node temp=SortedCompleteBinaryTree.searchNode(gemp);
+			if(temp==null){System.out.println(gemp+" dne");}else{System.out.println("at least one occurrence of "+temp.value+" exists");}	
+		}
+	}
+}
+
+class Node{
+		public Node leftChild=null; public Node rightChild=null; int value=0;
+		public Node(int v){this.value=v;}
+
+	}
+class Tree{
+	
+	public Node root=null;
+	public Node searchNode(int val){Node temp=root;
+		while(true){
+		if(temp==null){return null;}
+
+		if(val==temp.value){return temp;}else if(val<temp.value){temp=temp.leftChild;} else{temp=temp.rightChild;} }
+	}	
+}
